@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom'
+import { IoIosLogOut } from 'react-icons/io'
 
 const Container = styled.div`
   height: 100vh;
@@ -23,7 +24,16 @@ const NavigationBar = styled.nav`
   }
   ul {
     width: 100%;
+    display: flex;
   }
+`
+
+const Button = styled.button`
+  background: transparent;
+  border: none;
+  display: flex;
+  margin-top: auto;
+  padding: 20px;
 `
 
 const Dashboard = () => {
@@ -37,9 +47,9 @@ const Dashboard = () => {
     <Container>
       <NavigationBar>
         <ul>
-          <button onClick={handleLogout}>
-            <span>Logout</span>
-          </button>
+          <Button onClick={handleLogout}>
+            <IoIosLogOut size={30} />
+          </Button>
         </ul>
       </NavigationBar>
     </Container>
