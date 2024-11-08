@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom'
-import { IoIosLogOut } from 'react-icons/io'
+import { Icon } from '@common/Icon'
 
 const Container = styled.div`
   height: 100vh;
@@ -36,8 +36,11 @@ const Button = styled.button`
   padding: 20px;
 `
 
+const Content = styled.div``
+
 const Dashboard = () => {
   const navigate = useNavigate()
+
   const handleLogout = () => {
     window.localStorage.removeItem('token')
     window.location.hash = ''
@@ -48,10 +51,13 @@ const Dashboard = () => {
       <NavigationBar>
         <ul>
           <Button onClick={handleLogout}>
-            <IoIosLogOut size={30} />
+            <Icon name="SIGNOUT" size={30} />
           </Button>
         </ul>
       </NavigationBar>
+      <Content>
+        <h1>Dashboard</h1>
+      </Content>
     </Container>
   )
 }

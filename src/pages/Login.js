@@ -6,6 +6,8 @@ const REDIRECT_URI = 'http://localhost:3000'
 const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize'
 const RESPONSE_TYPE = 'token'
 
+const AUTH_URL = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&response_type=${RESPONSE_TYPE}&redirect_uri=${REDIRECT_URI}&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state`
+
 const Login = () => {
   const navigate = useNavigate() // Initialize the useNavigate hook
   useEffect(() => {
@@ -22,15 +24,11 @@ const Login = () => {
       window.localStorage.setItem('token', token)
       navigate('/dashboard')
     }
-  }, [navigate])
+  }, [])
 
   return (
     <div>
-      <a
-        href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
-      >
-        Login to Spotify
-      </a>
+      <a href={AUTH_URL}>Login to Spotify</a>
     </div>
   )
 }
