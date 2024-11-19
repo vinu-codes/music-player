@@ -6,17 +6,14 @@ const app = express() // Make express app
 app.use(bodyParser.json())
 app.use(cors()) // Enable CORS for all origins
 
-require('dotenv').config()
+require('dotenv').config({ path: '../.env' })
 
 const CLIENT_ID = process.env.CLIENT_ID
-const REDIRECT_URI = 'http://localhost:3000'
-const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize'
 const CLIENT_SECRET = process.env.CLIENT_SECRET
-const RESPONSE_TYPE = 'token'
+const REDIRECT_URI = 'http://localhost:3000'
 
 app.post('/login', async (req, res) => {
   const code = req.body.code
-  console.log('Request Body:', code)
 
   if (!code) {
     return res.status(400).json({ error: 'Authorization code required' })
@@ -38,11 +35,8 @@ app.post('/login', async (req, res) => {
         },
       },
     )
-
-    console.log({ response: response }, 'hi')
-    // res.send(JSON.parse(response))
+    res.send(response.data)
   } catch (error) {
-    console.error('Error exchanging code for token:', error)
     res.status(500).json({ error: 'Failed to exchange code for token' })
   }
 })
