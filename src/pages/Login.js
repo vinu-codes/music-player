@@ -1,4 +1,5 @@
 import React from 'react'
+import { useSpotifyContext } from '@hooks/SpotifyProvider'
 
 const CLIENT_ID = 'c731efae217b45818bc43ad7e1a14218'
 const REDIRECT_URI = 'http://localhost:3000'

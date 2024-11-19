@@ -11,41 +11,30 @@ const SpotifyContext = createContext()
 
 // SpotifyProvider component
 const SpotifyProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(null)
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [accessToken, setAccessToken] = useState(null)
   const [refreshToken, setRefreshToken] = useState(null)
   const [expiresIn, setExpiresIn] = useState(null)
 
-  const contextValue = useMemo(
-    () => ({
-      isAuthenticated,
-      accessToken,
-      refreshToken,
-      expiresIn,
-      setAccessToken,
-      setRefreshToken,
-      setExpiresIn,
-      setIsAuthenticated,
-    }),
-    [
-      isAuthenticated,
-      accessToken,
-      refreshToken,
-      expiresIn,
-      setAccessToken,
-      setRefreshToken,
-      setExpiresIn,
-      setIsAuthenticated,
-    ],
-  )
-
   return (
-    <SpotifyContext.Provider value={contextValue}>
+    <SpotifyContext.Provider
+      value={{
+        accessToken,
+        setAccessToken,
+        refreshToken,
+        setRefreshToken,
+        expiresIn,
+        setExpiresIn,
+        isAuthenticated,
+        setIsAuthenticated,
+      }}
+    >
       {children}
     </SpotifyContext.Provider>
   )
 }
 
+// useSpotifyContext hook
 const useSpotifyContext = () => useContext(SpotifyContext)
 
 // useSpotify hook

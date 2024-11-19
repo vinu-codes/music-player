@@ -12,6 +12,8 @@ import {
 const PrivateRoutes = () => {
   const { isAuthenticated } = useSpotifyContext()
 
+  console.log({ isAuthenticated })
+
   if (!!isAuthenticated) {
     console.log('User is authenticated', isAuthenticated)
     return <Outlet />
@@ -21,6 +23,8 @@ const PrivateRoutes = () => {
 }
 
 const App = () => {
+  // i think the problem is here
+  useSpotify()
   return (
     <SpotifyProvider>
       <Routes>
