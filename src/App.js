@@ -8,6 +8,7 @@ import {
   useSpotifyContext,
   useSpotify,
 } from '@hooks/SpotifyProvider'
+import { Authenticate } from '@pages/Authenticate'
 
 const PrivateRoutes = () => {
   const { isAuthenticated } = useSpotifyContext()
@@ -24,11 +25,11 @@ const PrivateRoutes = () => {
 
 const App = () => {
   // i think the problem is here
-  useSpotify()
   return (
     <SpotifyProvider>
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path='/authenticate' element={<Authenticate />} />
         <Route element={<PrivateRoutes />}>
           <Route path="/dashboard" element={<Dashboard />} />
         </Route>

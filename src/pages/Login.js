@@ -2,7 +2,7 @@ import React from 'react'
 import { useSpotifyContext } from '@hooks/SpotifyProvider'
 
 const CLIENT_ID = 'c731efae217b45818bc43ad7e1a14218'
-const REDIRECT_URI = 'http://localhost:3000'
+const REDIRECT_URI = 'http://localhost:3000/authenticate'
 const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize'
 const RESPONSE_TYPE = 'code'
 
