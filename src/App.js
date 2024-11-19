@@ -29,7 +29,6 @@ const App = () => {
     <SpotifyProvider>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path='/authenticate' element={<Authenticate />} />
         <Route element={<PrivateRoutes />}>
           <Route path="/dashboard" element={<Dashboard />} />
         </Route>
