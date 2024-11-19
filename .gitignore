@@ -5,6 +5,7 @@ build/
 .parcel-cache/
 .next/
 yarn.lock
+.env
 
 # Logs
 logs
