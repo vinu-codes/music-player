@@ -6,6 +6,7 @@ import {
   useGetUserProfileData,
 } from '@hooks/SpotifyProvider'
 import { Icon } from '@common/Icon'
+import { NewReleases } from '@components/NewReleases'
 import axios from 'axios'
 
 const Container = styled.div`
@@ -58,10 +59,8 @@ const Content = styled.div`
 
 const Dashboard = () => {
   const navigate = useNavigate()
-
   useGetUserProfileData()
-
-  const { userName } = useSpotifyContext()
+  const { userName, isAuthenticated, accessToken } = useSpotifyContext()
 
   const handleLogout = () => {
     window.location.hash = ''
@@ -82,7 +81,9 @@ const Dashboard = () => {
           </Button>
         </ul>
       </NavigationBar>
-      <Content></Content>
+      <Content>
+        <NewReleases />
+      </Content>
     </Container>
   )
 }
