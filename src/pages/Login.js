@@ -1,6 +1,6 @@
 import React from 'react'
-import { useSpotify, useSpotifyContext } from '@hooks/SpotifyProvider'
-import { redirect, replace, useNavigate } from 'react-router-dom'
+import { useSpotify } from '@hooks/SpotifyProvider'
+import { useNavigate } from 'react-router-dom'
 
 const CLIENT_ID = 'c731efae217b45818bc43ad7e1a14218'
 const REDIRECT_URI = 'http://localhost:3000'
@@ -11,19 +11,10 @@ const AUTH_URL = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&response_type=${RESPON
 
 const Login = () => {
   const navigate = useNavigate()
-  if (window.location.search.includes('code')) {
 
-    useSpotify(() => {
-      console.log('we best redirect')
-      navigate('/dashboard')
-    });
-
-    return (
-      <div>
-        <h1>Authenticating...</h1>
-      </div>
-    )
-  }
+  useSpotify(() => {
+    navigate('/dashboard')
+  })
 
   return (
     <div>

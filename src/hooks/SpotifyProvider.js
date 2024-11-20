@@ -38,7 +38,7 @@ const SpotifyProvider = ({ children }) => {
 const useSpotifyContext = () => useContext(SpotifyContext)
 
 // useSpotify hook
-const useSpotify = (authenticatedCallback = () => { }) => {
+const useSpotify = (authenticatedCallback = () => {}) => {
   const { setAccessToken, setRefreshToken, setExpiresIn, setIsAuthenticated } =
     useSpotifyContext()
 
@@ -60,8 +60,8 @@ const useSpotify = (authenticatedCallback = () => { }) => {
         setAccessToken(response.data.access_token)
         setRefreshToken(response.data.refresh_token)
         setExpiresIn(response.data.expires_in)
-        setIsAuthenticated(true);
-        authenticatedCallback();
+        setIsAuthenticated(true)
+        authenticatedCallback()
       } catch (error) {
         console.log({ error: error }, 'error received from server')
         setIsAuthenticated(false)

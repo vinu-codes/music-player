@@ -13,9 +13,9 @@ const Container = styled.div`
 const NavigationBar = styled.nav`
   display: flex;
   flex-direction: column;
-  /* background: #f7f7f7; */
-  height: 100vh;
-  width: 206px;
+  background: #f7f7f7;
+  max-height: 100%;
+  width: 260px;
   color: #a4a5a7;
   border-right: 1px solid #dfe3e8;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 4px 4px 0px;
@@ -50,7 +50,7 @@ const Button = styled.button`
 
 const Content = styled.div``
 
-const Dashboard = ({ code }) => {
+const Dashboard = () => {
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -69,9 +69,7 @@ const Dashboard = ({ code }) => {
           </Button>
         </ul>
       </NavigationBar>
-      <Content>
-        <h1>Dashboard</h1>
-      </Content>
+      <Content></Content>
     </Container>
   )
 }
