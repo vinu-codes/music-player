@@ -64,7 +64,7 @@ const Dashboard = () => {
           <h2>MUSIC-FY</h2>
         </div>
         <ul>
-          <Button onClick={handleLogout}>
+          <Button className="logout" onClick={handleLogout}>
             <Icon name="SIGNOUT" size={30} />
           </Button>
         </ul>
