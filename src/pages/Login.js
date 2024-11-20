@@ -54,7 +54,7 @@ const Login = () => {
   return (
     <Container>
       <Button>
-        <a href={AUTH_URL}>Login to Spotify</a>
+        <a href={AUTH_URL}>Login to Musicfy</a>
       </Button>
     </Container>
   )

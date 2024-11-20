@@ -15,6 +15,7 @@ const SpotifyProvider = ({ children }) => {
   const [accessToken, setAccessToken] = useState(null)
   const [refreshToken, setRefreshToken] = useState(null)
   const [expiresIn, setExpiresIn] = useState(null)
+  const [userName, setUserName] = useState(null)
 
   return (
     <SpotifyContext.Provider
@@ -27,6 +28,8 @@ const SpotifyProvider = ({ children }) => {
         setExpiresIn,
         isAuthenticated,
         setIsAuthenticated,
+        userName,
+        setUserName,
       }}
     >
       {children}
@@ -71,4 +74,31 @@ const useSpotify = (authenticatedCallback = () => {}) => {
   }, [code])
 }
 
-export { SpotifyProvider, useSpotifyContext, useSpotify }
+// useGetUserProfileData hook
+const useGetUserProfileData = () => {
+  const { isAuthenticated, accessToken, setUserName } = useSpotifyContext()
+  useEffect(() => {
+    if (!!isAuthenticated && accessToken) {
+      console.log('lets get the profile')
+      const getUserProfileData = async () => {
+        const config = {
+          url: 'https://api.spotify.com/v1/me',
+          method: 'GET',
+          headers: {
+            Authorization: 'Bearer ' + accessToken,
+          },
+        }
+        try {
+          const response = await axios(config)
+          console.log(response.data, 'received profile data')
+          setUserName(response.data.display_name)
+        } catch (error) {
+          console.log({ error: error }, 'error received getting profile')
+        }
+      }
+      getUserProfileData()
+    }
+  }, [isAuthenticated, accessToken])
+}
+
+export { SpotifyProvider, useSpotifyContext, useSpotify, useGetUserProfileData }

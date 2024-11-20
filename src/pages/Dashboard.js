@@ -1,8 +1,12 @@
 import React, { useEffect, useContext } from 'react'
 import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom'
-import { useSpotifyContext } from '@hooks/SpotifyProvider'
+import {
+  useSpotifyContext,
+  useGetUserProfileData,
+} from '@hooks/SpotifyProvider'
 import { Icon } from '@common/Icon'
+import axios from 'axios'
 
 const Container = styled.div`
   height: 100vh;
@@ -48,10 +52,16 @@ const Button = styled.button`
   padding: 0 20px 0 0;
 `
 
-const Content = styled.div``
+const Content = styled.div`
+  width: 100%;
+`
 
 const Dashboard = () => {
   const navigate = useNavigate()
+
+  useGetUserProfileData()
+
+  const { userName } = useSpotifyContext()
 
   const handleLogout = () => {
     window.location.hash = ''
@@ -62,6 +72,9 @@ const Dashboard = () => {
       <NavigationBar>
         <div className="header" style={{ width: '100%' }}>
           <h2>MUSIC-FY</h2>
+          <div className="profile-image-container">
+            {userName ? userName : 'user-name'}
+          </div>
         </div>
         <ul>
           <Button className="logout" onClick={handleLogout}>
