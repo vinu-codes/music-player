@@ -32,11 +32,15 @@ const Card = styled.div`
     padding: 0;
     margin: 8px 0 8px 0;
     word-wrap: break-word;
+    font-weight: 400;
+    font-size: 18px;
   }
   p {
     margin: 0;
     padding: 0;
     word-wrap: break-word;
+    font-weight: 300;
+    font-size: 14px;
   }
   div.image-container {
     width: 100px;
