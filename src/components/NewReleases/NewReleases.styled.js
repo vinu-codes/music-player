@@ -7,31 +7,45 @@ const Container = styled.div`
   padding: 0 20px 0 20px;
 `
 
+const Header = styled.h1`
+  color: rgb(164, 165, 167);
+  font-weight: 300;
+`
+
 const CardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  column-gap: 20px;
 `
 
 const Card = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #dfe3e8;
   border-radius: 10px;
-  padding: 20px;
   margin: 10px;
-  width: 200px;
+  width: 167px;
   img {
     width: 100%;
-    border-radius: 10px;
   }
   h3 {
-    margin: 10px 0;
+    margin: 0;
+    padding: 0;
+    margin: 8px 0 8px 0;
+    word-wrap: break-word;
   }
   p {
-    margin: 10px 0;
+    margin: 0;
+    padding: 0;
+    word-wrap: break-word;
+  }
+  div.image-container {
+    width: 100px;
+    height: 100px;
+    box-shadow: 2px 5px 10px rgba(22, 20, 19, 0.3);
+    border-radius: 5px;
+    width: 167px;
+    height: 167px;
   }
 `
 
-export { Container, Card, CardContainer }
+export { Container, Card, CardContainer, Header }

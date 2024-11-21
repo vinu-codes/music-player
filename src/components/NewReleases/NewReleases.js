@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Container, Card, CardContainer } from './NewReleases.styled'
+import { Container, Card, CardContainer, Header } from './NewReleases.styled'
 import { useSpotifyContext } from '@hooks/SpotifyProvider'
 import axios from 'axios'
 
@@ -9,12 +9,13 @@ const NewReleases = () => {
 
   const createState = (items) => {
     const result = items.map((item) => {
-      const { id, name, artists, images } = item
+      const { id, name, artists, images, href } = item
       return {
         id,
         name,
         artists: artists[0].name,
         images: images[1].url,
+        href,
       }
     })
     setNewReleases(result)
@@ -47,8 +48,12 @@ const NewReleases = () => {
     const newReleasesList = newReleases.map((item, index) => {
       return (
         <Card key={item.id}>
+          <div className="image-container">
+            <a href={item.href}>
+              <img src={item.images} alt={item.name} />
+            </a>
+          </div>
           <h3>{item.name}</h3>
-          <img src={item.images} alt={item.name} />
           <p>{item.artists}</p>
         </Card>
       )
@@ -58,7 +63,7 @@ const NewReleases = () => {
 
   return (
     <Container>
-      <h1>New Releases</h1>
+      <Header>New Releases</Header>
       <CardContainer>{renderNewReleases()}</CardContainer>
     </Container>
   )

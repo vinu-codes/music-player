@@ -70,10 +70,10 @@ const Dashboard = () => {
     <Container>
       <NavigationBar>
         <div className="header" style={{ width: '100%' }}>
-          <h2>MUSIC-FY</h2>
-          <div className="profile-image-container">
-            {userName ? userName : 'user-name'}
-          </div>
+          <h2 style={{ fontWeight: '300' }}>MUSIC-FY</h2>
+        </div>
+        <div className="profile-image-container">
+          {userName ? userName : 'user-name'}
         </div>
         <ul>
           <Button className="logout" onClick={handleLogout}>
